@@ -1,3 +1,11 @@
+/**
+ * Adiciona uma nova tarefa à lista de tarefas.
+ * Obtém o nome da tarefa a partir do valor do campo de entrada de texto.
+ * Cria um objeto de tarefa com o nome e a propriedade "completed" definida como false.
+ * Adiciona o objeto de tarefa à lista de tarefas armazenada no localStorage.
+ * Chama a função renderTaskList() para atualizar a lista de tarefas na página.
+ * Limpa o campo de entrada de texto.
+ */
 function addTask() {
     let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
     let taskName = document.getElementById("task").value;
@@ -8,6 +16,15 @@ function addTask() {
       document.getElementById("task").value = "";
     }
   }
+
+  /**
+ * Remove uma tarefa da lista de tarefas.
+ * Recebe o índice da tarefa a ser removida como parâmetro.
+ * Obtém a lista de tarefas armazenada no localStorage.
+ * Remove a tarefa correspondente da lista de tarefas.
+ * Atualiza a lista de tarefas armazenada no localStorage.
+ * Chama a função renderTaskList() para atualizar a lista de tarefas na página.
+ */
   
   function deleteTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
@@ -16,6 +33,19 @@ function addTask() {
     renderTaskList();
   }
   
+  /**
+ * Edita o nome de uma tarefa na lista de tarefas.
+ * Recebe o índice da tarefa a ser editada como parâmetro.
+ * Obtém a lista de tarefas armazenada no localStorage.
+ * Obtém o elemento HTML da tarefa correspondente na página.
+ * Obtém o elemento HTML que exibe o nome da tarefa.
+ * Obtém o valor atual do nome da tarefa.
+ * Cria uma caixa de texto com o valor atual do nome da tarefa.
+ * Substitui o elemento HTML que exibe o nome da tarefa pela caixa de texto.
+ * Adiciona botões "Salvar" e "Cancelar" à lista de botões da tarefa.
+ * Define o foco na caixa de texto.
+ */
+
   function editTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
     let taskElement = document.getElementById(`task-${index}`);
@@ -33,6 +63,19 @@ function addTask() {
     `;
     editBox.focus();
   }
+
+  /**
+ * Salva as alterações feitas no nome de uma tarefa na lista de tarefas.
+ * Recebe o índice da tarefa a ser salva como parâmetro.
+ * Obtém a lista de tarefas armazenada no localStorage.
+ * Obtém o elemento HTML da tarefa correspondente na página.
+ * Obtém a caixa de texto que contém o novo nome da tarefa.
+ * Obtém o novo nome da tarefa a partir do valor da caixa de texto.
+ * Verifica se o novo nome da tarefa não está vazio.
+ * Atualiza o nome da tarefa correspondente na lista de tarefas.
+ * Atualiza a lista de tarefas armazenada no localStorage.
+ * Chama a função renderTaskList() para atualizar a lista de tarefas na página.
+ */
   
   function saveTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
@@ -46,11 +89,30 @@ function addTask() {
     }
   }
   
+
+  /**
+ * Cancela a edição do nome de uma tarefa na lista de tarefas.
+ * Recebe o índice da tarefa a ser cancelada como parâmetro.
+ * Obtém a lista de tarefas armazenada no localStorage.
+ * Chama a função renderTaskList() para atualizar a lista de tarefas na página sem salvar as alterações.
+*/
+
   function cancelEditTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
     renderTaskList();
   }
   
+
+  /**
+
+Marca uma tarefa como concluída na lista de tarefas.
+Recebe o índice da tarefa a ser concluída como parâmetro.
+Obtém a lista de tarefas armazenada no localStorage.
+Define a propriedade "completed" da tarefa correspondente como true.
+Atualiza a lista de tarefas armazenada no localStorage.
+Chama a função renderTaskList() para atualizar a lista de tarefas na página.
+*/
+
   function completeTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
     taskList[index].completed = true;
@@ -58,6 +120,20 @@ function addTask() {
     renderTaskList();
   }
   
+
+  /**
+
+Renderiza a lista de tarefas na página.
+Obtém a lista de tarefas armazenada no localStorage.
+
+Obtém os elementos HTML para a lista de tarefas pendentes e concluídas.
+
+Limpa o conteúdo dos elementos HTML para a lista de tarefas pendentes e concluídas.
+
+Para cada tarefa na lista de tarefas, cria um elemento HTML correspondente.
+
+Adiciona o elemento HTML à lista de tarefas pendentes ou concluídas, dependendo do valor da propriedade "completed".
+*/
   function renderTaskList() {
     let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
     let taskListElement = document.getElementById("taskList");
@@ -73,7 +149,7 @@ function addTask() {
         <div class="taskButtons">
           <button class="taskEdit" onclick="editTask(${i})">Editar</button>
           <button class="taskDelete" onclick="deleteTask(${i})">Excluir</button>
-          <button class="taskComplete" onclick="completeTask(${i})">Concluir</button>
+          ${task.completed ? "" : `<button class="taskComplete" onclick="completeTask(${i})">Concluir</button>`}
         </div>
       `;
       if (task.completed) {
@@ -84,4 +160,6 @@ function addTask() {
     }
   }
   
+  // Chama a função renderTaskList() para renderizar a lista de tarefas na página quando a página é carregada.
   renderTaskList();
+
