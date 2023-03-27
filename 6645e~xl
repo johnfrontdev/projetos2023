@@ -1,0 +1,23 @@
+[33mcommit 10f014dff8e2a25571f1b67d12562cad8be08901[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Jonas Lima <timexlusion@gmail.com>
+Date:   Mon Mar 27 01:02:51 2023 -0300
+
+    Remover botão concluir ao marcar tarefa concluida
+
+[33mcommit 7f0c4d27eb746ee52ddd305414b1a210158d61e4[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Jonas Lima <timexlusion@gmail.com>
+Date:   Sun Mar 26 14:37:42 2023 -0300
+
+    Modificando nome da pasta
+
+[33mcommit e83d3de4b940bfc126b6e73326944b30bf36a435[m
+Author: Jonas Lima <timexlusion@gmail.com>
+Date:   Sun Mar 26 14:21:53 2023 -0300
+
+    Modiaficando os arquivos
+
+[33mcommit c8ba0f3068c8d0f02440262a6f5e70625eac615e[m
+Author: Jonas Lima <timexlusion@gmail.com>
+Date:   Sun Mar 26 14:16:20 2023 -0300
+
+    Simples gerenciador de tarefas

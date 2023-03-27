@@ -111,7 +111,7 @@ Obtém a lista de tarefas armazenada no localStorage.
 Define a propriedade "completed" da tarefa correspondente como true.
 Atualiza a lista de tarefas armazenada no localStorage.
 Chama a função renderTaskList() para atualizar a lista de tarefas na página.
-*/
+.*/
 
   function completeTask(index) {
     let taskList = JSON.parse(localStorage.getItem("taskList"));
